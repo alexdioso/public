@@ -239,9 +239,9 @@ autocmd BufEnter *.p[lm] iab psub :r ~/git/public/templates/perl/subroutine.pl
 " ISC License with JavaScript comments
 autocmd BufEnter *.js iab jiscl :r ~/git/public/templates/js/isc_license.jskdd
 " JavaScript class/function initial comments template
-autocmd BufEnter *.js iab jclass :r ~/git/templates/js/class.jskdd
+autocmd BufEnter *.js iab jclass :r ~/git/public/templates/js/class.jskdd
 " JavaScript initial externs template
-autocmd BufEnter *.js iab jexterns :r ~/git/templates/js/externs.jskdd
+autocmd BufEnter *.js iab jexterns :r ~/git/public/templates/js/externs.jskdd
 
 " ISC License with XML comments
-autocmd BufEnter *.xml iab xiscl :r ~/git/templates/xml/isc_license.xmlkdd
+autocmd BufEnter *.xml iab xiscl :r ~/git/public/templates/xml/isc_license.xmlkdd
