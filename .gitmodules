@@ -13,3 +13,4 @@
 [submodule "configs/vim/bundle/taglist"]
 	path = configs/vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+    ignore = untracked
