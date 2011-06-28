@@ -168,7 +168,6 @@ autocmd BufEnter *.[xX]68 set syntax=asm68k
 " If this is a really wide window then split the screen vertically
 if winwidth(0) >= 160
     set winwidth=80
-    set winminwidth=80
     " Perl scripts - check for errors
     autocmd BufEnter *.p[lm] nnoremap <silent> ,pC :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
     " Perl scripts - run perlcritic on entire file
