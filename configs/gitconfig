@@ -1,0 +1,10 @@
+[user]
+    name = Alex Dioso
+    email = alex.dioso@ikaika.org
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[core]
+	autocrlf = input

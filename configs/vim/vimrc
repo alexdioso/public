@@ -1,0 +1,247 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Dependencies
+" Perl
+" Perl Critic
+" Perl Tidy
+" xmllint
+" spidermonkey
+" closure
+"
+" Pathogen
+"   https://github.com/tpope/vim-pathogen
+"
+" Bundles
+" Fugitive
+"   https://github.com/tpope/vim-fugitive
+" Taglist
+"   https://github.com/vim-scripts/taglist.vim
+" Perl Critic Vim Compiler -
+"   https://github.com/vim-scripts/perlcritic-compiler-script
+" javaScriptLint.vim
+"   https://github.com/joestelmach/javaScriptLint.vim
+"
+" Bundle Dependencies
+" Taglist - exuberant ctags
+
+" Enable Pathogen
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable loading plugin files for specific file types
+filetype plugin on
+filetype indent on
+" Enable the mouse
+set mouse-=a
+" Allow backspacing over autoindent, line breaks, start of insert
+set backspace=2
+" Disable backups, useful for read-only media and limited space
+set nobackup
+" Substitute all matches on a line by default
+set gdefault
+" Turn on short messages
+set shortmess="aoI"
+" Disable history
+set viminfo=""
+" Enable autowrite
+set autowrite
+" Disable autowrite for extra commands
+set noautowriteall
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Formatting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim default format options, just in case
+set formatoptions=tcq
+" Automatic c code indenting
+set cindent
+" Fix for vim outdenting comments to column 1
+" from http://thenobot.org/stories/?i=117
+set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+" Automatically indent
+set autoindent
+" Make inserting and removing tabs easier
+set smarttab
+" Replace tabs with spaces
+set expandtab
+" Number of characters limited to a line
+set textwidth=77
+" Each auto-indent step is this many spaces
+set shiftwidth=4
+" Number of spaces in a tab
+set tabstop=4
+" Round indent to multiple of shiftwidth
+set shiftround
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searching
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searches wrap around the end of the file
+set wrapscan
+" Disable search results highlighting
+set nohlsearch
+" While typing a search command, show where the pattern, as it was typed so
+" far, matches.
+set noincsearch
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Visual display
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Virtually wrap long lines
+set wrap
+" Show line numbers
+set number
+" Show current line number and horizontal position
+set ruler
+" Show the current file name in the title bar
+set title
+" Add $ to cpoptions, when changing a line put '$' at the end of the line,
+" changed text is overwritten
+" Also add to ~/vim/after/ftplugin/taglist.vim because taglist.vim resets this
+" to the default settings
+set cpoptions+=$
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax highlighting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn on syntax highlighting
+syntax on
+" Default blue for comments is too dark on dark background terminals
+hi comment ctermfg=blue
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General key mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" map f !Gperl -MText::Autoformat -e'autoformat {squeeze=>0}'
+" Format text
+map f {!}fmt -77
+" Page forward
+map <space> <c-f>
+" Page backward
+map <backspace> <c-b>
+" Re-read your .vimrc
+nmap ,s :source ~/.vimrc<cr>
+" Edit your .vimrc
+nmap ,v :e ~/.vimrc
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TagList
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto open TagList on supported files
+let Tlist_Auto_Open = 1
+" Exit if TagList is the only window left
+let Tlist_Exit_OnlyWindow = 1
+" Auto close the fold for inactive files 
+let Tlist_File_Fold_Auto_Close = 1
+" Only show the current file in TagList
+"let Tlist_Show_One_File = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Source Code
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Makefiles - don't expand tabs, don't automatically indent, default tab size
+autocmd BufEnter [Mm]akefile* set noet nocindent tabstop=8 nosmarttab
+
+" Portfiles - specific settings
+autocmd BufEnter Portfile set fenc=utf-8 ft=tcl et sw=4 ts=4 sts=4
+
+" Syntax Highlighting
+" Perl scripts - turn on syntax highlighting
+autocmd BufEnter *.p[lm] set syntax=perl
+" JavaScript - turn on syntax highlighting
+autocmd BufEnter *.js set syntax=javascript
+" m68k assembly - turn on syntax highlighting
+autocmd BufEnter *.[xX]68 set syntax=asm68k
+
+" using 'compiler perl' with 'makeprg perl -c' seemed to cause perl -Wc which
+" would include errors from modules (especially from Readonly)
+
+" If this is a really wide window then split the screen vertically
+if winwidth(0) >= 160
+    set winwidth=80
+    set winminwidth=80
+    " Perl scripts - check for errors
+    autocmd BufEnter *.p[lm] nnoremap <silent> ,pC :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
+    " Perl scripts - run perlcritic on entire file
+    autocmd BufEnter *.p[lm] nnoremap <silent> ,pc :compiler perlcritic<cr>:make<cr>:vert cope<cr>
+else
+    " Perl scripts - check for errors
+    autocmd BufEnter *.p[lm] nnoremap <silent> ,pC :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
+    " Perl scripts - run perlcritic on entire file
+    autocmd BufEnter *.p[lm] nnoremap <silent> ,pc :compiler perlcritic<cr>:make<cr>:cope<cr>
+endif
+
+" Perl scripts - tidy line
+autocmd BufEnter *.p[lm] nnoremap <silent> ,pt :let save_cursor = getpos(".")<cr>:.!perltidy -q<cr>:call setpos('.', save_cursor)<cr>
+" Perl scripts - tidy entire file
+autocmd BufEnter *.p[lm] nnoremap <silent> ,pT :let save_cursor = getpos(".")<cr>:%!perltidy -q<cr>:call setpos('.', save_cursor)<cr>
+" Perl scripts - Deparse single line of obfuscated perl code
+autocmd BufEnter *.p[lm] nnoremap <silent> ,pd :.!perl -MO=Deparse 2>/dev/null<cr>
+" Perl scripts - Deparse entire file of obfuscated perl code
+autocmd BufEnter *.p[lm] nnoremap <silent> ,pD :%!perl -MO=Deparse 2>/dev/null<cr>
+
+" Tidy C source code
+"autocmd BufEnter *.c map t 1G!Gindent -br -brs -brf -npcs -npsl -di16 -nut -cli4
+" KNF?
+autocmd BufEnter *.c map t 1G!Gindent -nbad -nbap -bbb -nbc -br -brs -c33 -cd33 -cdb -ce -ci4 -cli0 -di16 -fc1 -fca -hnl -i8 -ip4 -l79 -lp -npcs -nprs -psl -saf -sai -saw -sc -nsob -nss -ts8 
+
+" JavaScript - Run spidermonkey on entire file
+autocmd BufEnter *.js nnoremap <silent> ,jj :set makeprg=js\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
+" JavaScript - Run closure compiler on entire file
+"autocmd BufEnter *.js nnoremap <silent> ,jc :set makeprg=closure\ --compilation_level\ ADVANCED_OPTIMIZATIONS\ --js\ %\ --js_output_file\ %:r.tiny.js\ --externs\ %:r.externs.js<cr>:make<cr><cr>
+
+" TODO
+" Need to figure out how to find line numbers to run closure on specific
+" section of the file
+" autocmd BufEnter *.xml nnoremap <silent> ,jc :37,317!closure --compilation_level ADVANCED_OPTIMIZATIONS<cr>
+
+" Tidy xml
+autocmd BufEnter *.xhtml nnoremap <silent> ,pX :%!xmllint --format --recover - 2>/dev/null<cr>
+autocmd BufEnter *.xml nnoremap <silent> ,pX :%!xmllint --format --recover - 2>/dev/null<cr>
+
+" Google Gadgets XML
+au BufRead <google_gadgets> runtime! syntax/google_gadgets.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Outlines
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufEnter *.otl set ai ic backspace=2 foldmethod=indent noexpandtab nosmarttab softtabstop=0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text files
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn off colors
+autocmd BufEnter *.txt syntax off
+" Check spelling
+autocmd BufEnter *.txt,*.html,README set spell
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Templates
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Entire perl modulino template
+autocmd BufEnter *.p[lm] iab ptemplate :r ~/git/public/templates/perl/Template.pmkdd
+" ISC License with Perl comments
+autocmd BufEnter *.p[lm] iab piscl :r ~/git/public/templates/perl/isc_license.plkdd
+" Perl subroutine initial comments template
+autocmd BufEnter *.p[lm] iab psub :r ~/git/public/templates/perl/subroutine.plkdd
+
+" ISC License with JavaScript comments
+autocmd BufEnter *.js iab jiscl :r ~/git/public/templates/js/isc_license.jskdd
+" JavaScript class/function initial comments template
+autocmd BufEnter *.js iab jclass :r ~/git/templates/js/class.jskdd
+" JavaScript initial externs template
+autocmd BufEnter *.js iab jexterns :r ~/git/templates/js/externs.jskdd
+
+" ISC License with XML comments
+autocmd BufEnter *.xml iab xiscl :r ~/git/templates/xml/isc_license.xmlkdd

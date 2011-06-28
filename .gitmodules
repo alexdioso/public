@@ -1,0 +1,15 @@
+[submodule "configs/vim/pathogen"]
+	path = configs/vim/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "configs/vim/bundle/fugitive"]
+	path = configs/vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "configs/vim/bundle/javaScriptLint.vim"]
+	path = configs/vim/bundle/javaScriptLint.vim
+	url = https://github.com/joestelmach/javaScriptLint.vim.git
+[submodule "configs/vim/bundle/perlcritic-compiler-script"]
+	path = configs/vim/bundle/perlcritic-compiler-script
+	url = https://github.com/vim-scripts/perlcritic-compiler-script.git
+[submodule "configs/vim/bundle/taglist"]
+	path = configs/vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git

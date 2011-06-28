@@ -1,0 +1,2 @@
+// Externs
+// function textDiv(text){};

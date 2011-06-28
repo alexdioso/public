@@ -1,0 +1,16 @@
+exclude = RequireRcsKeywords
+
+[Modules::ProhibitEvilModules]
+modules = /Log::Message/ {Found Log::Message based module.  These modules seem to be slow, use Local::Debug::Color instead.}
+
+[TestingAndDebugging::ProhibitNoWarnings]
+allow = recursion
+
+[Documentation::PodSpelling]
+stop_words = TODO writeman manpage Tk perl perldoc perlmodlib SQL Dioso CPAN Readonly MSSQL GPL README
+
+[InputOutput::RequireBriefOpen]
+lines = 15
+
+#[NamingConventions::Capitalization]
+#subroutines = :starts_with_lower

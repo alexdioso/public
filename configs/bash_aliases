@@ -1,0 +1,80 @@
+##############################################################################
+# Functions
+##############################################################################
+fullpath () {
+    if [ $1 ]; then
+        ls -d `pwd`/$1
+    else
+        ls -d `pwd`/*
+    fi
+}
+
+# Signal handler
+TRAPUSR1() {
+    # need to source things in to affect parent ENV
+    for f in ~/.bash/sighandle/USR1/*; do
+        [ -x $f ] && . $f
+    done
+    unset f
+}
+trap TRAPUSR1 USR1
+
+# Send signal to all shells
+signalit () {
+    PATTERN='[-/]bash$'
+    SIGNAL=$1
+
+    ps xwwo pid,command | while read pid command; do
+        if echo $command | egrep -- "$PATTERN" >/dev/null; then
+            kill -$SIGNAL $pid
+        fi
+    done
+}
+
+##############################################################################
+# Environment setup
+##############################################################################
+export CVS_RSH=/usr/bin/ssh
+
+if [ $TERM = "xterm" -o $TERM = "xterm-color" ]; then
+    export PS1='\[\e]2;\u@\h \w\a\]\[\e[31m\]\u\[\e[32m\]@\h \[\e[1;34m\]\w\[\e[0m\]$ '
+    export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+    cd
+elif [ $TERM = "screen" ]; then
+    export PS1='\[\e]2;\u@\h \w\a\]\[\e[31m\]\u\[\e[32m\]@\h \[\e[1;34m\]\w\[\e[0m\]$ '
+    export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007\033k$HOSTNAME\033\\"'
+else
+    export PS1="\[\e[31m\]\u\[\e[32m\]@\h \[\e[34m\]\w\[\e[0m\]$ "
+fi
+
+if [ ! -d $HOME/.bash_history_dir ]; then
+    mkdir $HOME/.bash_history_dir
+fi
+export HISTFILE=$HOME/.bash_history_dir/$HOSTNAME.history
+
+export CLICOLOR=1
+export EDITOR=vi
+export LESSHISTFILE="-"
+export PAGER=/usr/bin/less
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+# Use vi bindings instead of emacs
+set -o vi
+
+##############################################################################
+# Aliases
+##############################################################################
+alias usr1='signalit USR1'
+alias fp='fullpath'
+alias keyon='ssh-add -t 86400'
+alias keyoff='ssh-add -D'
+alias keylist='ssh-add -l'
+alias keylock='ssh-add -x'
+alias keyunlock='ssh-add -X'
+#alias up='cvs up -AdPf'
+#alias ftp='ncftp'
+#alias vi='vim'
+#alias ls='ls --color=tty'
+alias sha1='/usr/bin/openssl sha1'
+alias rmd160='/usr/bin/openssl rmd160'
+alias blender='LIBGL_ALWAYS_SOFTWARE=1 blender'
