@@ -10,7 +10,7 @@ use version; our $VERSION = qv(0.01);
 use Pod::Usage;
 use Pod::Man;
 use Getopt::Long;
-use Fatal qw( open close );
+use autodie qw( :all );
 use Carp;
 use English qw( -no_match_vars );
 use Data::Dumper;
@@ -217,10 +217,13 @@ warnings
 Pod::Usage
 Pod::Man
 Getopt::Long
-Fatal
+autodie
 Carp
 English
 Data::Dumper
+
+- CPAN -
+IPC::System::Simple (required by use autodie ( :all )
 
 - Local Distribution -
 Local::Debug::Color

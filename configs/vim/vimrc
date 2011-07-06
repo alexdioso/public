@@ -121,7 +121,7 @@ hi comment ctermfg=blue
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map f !Gperl -MText::Autoformat -e'autoformat {squeeze=>0}'
 " Format text
-map f {!}fmt -77
+map f {!}fmt -79
 " Page forward
 map <space> <c-f>
 " Page backward
