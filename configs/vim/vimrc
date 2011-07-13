@@ -210,6 +210,8 @@ autocmd BufEnter *.xml nnoremap <silent> ,pX :%!xmllint --format --recover - 2>/
 " Google Gadgets XML
 au BufRead <google_gadgets> runtime! syntax/google_gadgets.vim
 
+autocmd BufEnter *.ebnf runtime! bundle/ebnf.vim/syntax/ebnf.vim
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Outlines
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
