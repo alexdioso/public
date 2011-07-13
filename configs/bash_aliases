@@ -56,9 +56,9 @@ export CLICOLOR=1
 export EDITOR=vi
 export LESSHISTFILE="-"
 export PAGER=/usr/bin/less
-export PATH=$PATH:/usr/local/go/bin:$HOME/lib/google_appengine
+export PATH=$PATH:/usr/local/go/bin:$HOME/lib/google_appengine:$HOME/lib/android-sdk-linux_x86/platform-tools:$HOME/lib/android-sdk-linux_x86/tools
 export GOROOT=/usr/local/go
-# Use vi bindings instead of emacs
+# Use vi bindings for the shell instead of emacs
 set -o vi
 
 ##############################################################################
