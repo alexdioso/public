@@ -210,7 +210,11 @@ autocmd BufEnter *.xml nnoremap <silent> ,pX :%!xmllint --format --recover - 2>/
 " Google Gadgets XML
 au BufRead <google_gadgets> runtime! syntax/google_gadgets.vim
 
+" .ebnf format
 autocmd BufEnter *.ebnf runtime! bundle/ebnf.vim/syntax/ebnf.vim
+
+" Go Lang
+autocmd BufEnter *.go nnoremap <silent> ,gf :let save_cursor = getpos(".")<cr>:%!gofmt<cr>:call setpos('.', save_cursor)<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Outlines
