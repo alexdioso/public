@@ -216,6 +216,11 @@ autocmd BufEnter *.ebnf runtime! bundle/ebnf.vim/syntax/ebnf.vim
 " Go Lang
 autocmd BufEnter *.go nnoremap <silent> ,gf :let save_cursor = getpos(".")<cr>:%!gofmt<cr>:call setpos('.', save_cursor)<cr>
 
+" Android development
+" vim must be run from project root
+" Install current project
+autocmd BufEnter *.java nnoremap <silent> ,ai :!ant install<cr>
+autocmd BufEnter *.java nnoremap <silent> ,ad :!ant debug<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Outlines
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
