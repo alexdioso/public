@@ -17,3 +17,6 @@
 [submodule "configs/vim/bundle/ebnf.vim"]
 	path = configs/vim/bundle/ebnf.vim
 	url = https://github.com/vim-scripts/ebnf.vim.git
+[submodule "configs/vim/bundle/supertab"]
+	path = configs/vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
