@@ -221,6 +221,7 @@ autocmd BufEnter *.go nnoremap <silent> ,gf :let save_cursor = getpos(".")<cr>:%
 " Install current project
 autocmd BufEnter *.java nnoremap <silent> ,ai :!ant install<cr>
 autocmd BufEnter *.java nnoremap <silent> ,ad :!ant debug<cr>
+autocmd BufEnter *.java nnoremap <silent> ,at :!ant run-tests<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Outlines
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
