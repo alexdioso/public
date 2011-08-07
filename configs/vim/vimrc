@@ -105,6 +105,10 @@ set title
 " Also add to ~/vim/after/ftplugin/taglist.vim because taglist.vim resets this
 " to the default settings
 set cpoptions+=$
+" Turn on syntax folding
+set foldmethod=syntax
+" Set highlighting of folded areas to a darker color
+hi Folded ctermbg=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
