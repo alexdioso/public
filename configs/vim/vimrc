@@ -108,7 +108,7 @@ set cpoptions+=$
 " Turn on syntax folding
 set foldmethod=syntax
 " Set highlighting of folded areas to a darker color
-hi Folded ctermbg=0
+hi Folded ctermfg=6 ctermbg=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
