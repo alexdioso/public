@@ -108,7 +108,7 @@ set cpoptions+=$
 " Turn on syntax folding
 set foldmethod=syntax
 " Set highlighting of folded areas to a darker color
-hi Folded ctermfg=6 ctermbg=0
+hi Folded ctermfg=2 ctermbg=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -147,6 +147,12 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 1
 " Only show the current file in TagList
 "let Tlist_Show_One_File = 1
+" Show the TagList on the right
+let Tlist_Use_Right_Window = 1
+
+if winwidth(0) >= 160
+    let Tlist_WinWidth = 40
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
