@@ -20,3 +20,6 @@
 [submodule "configs/vim/bundle/supertab"]
 	path = configs/vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "configs/vim/bundle/vim-colors-solarized"]
+	path = configs/vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

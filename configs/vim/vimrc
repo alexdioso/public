@@ -108,7 +108,10 @@ set cpoptions+=$
 " Turn on syntax folding
 set foldmethod=syntax
 " Set highlighting of folded areas to a darker color
-hi Folded ctermfg=2 ctermbg=0
+"hi Folded ctermfg=2 ctermbg=0
+" Highlight parts of the line that are longer than 78 characters
+"hi OverLength ctermbg=darkred ctermfg=white
+"match OverLength /\%79v.\+/
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -117,7 +120,9 @@ hi Folded ctermfg=2 ctermbg=0
 " Turn on syntax highlighting
 syntax on
 " Default blue for comments is too dark on dark background terminals
-hi comment ctermfg=blue
+"hi comment ctermfg=blue
+set background=dark
+colorscheme solarized
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

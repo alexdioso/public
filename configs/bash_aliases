@@ -36,17 +36,6 @@ signalit () {
 ##############################################################################
 export CVS_RSH=/usr/bin/ssh
 
-if [ $TERM = "xterm" -o $TERM = "xterm-color" ]; then
-    export PS1='\[\e]2;\u@\h \w\a\]\[\e[31m\]\u\[\e[32m\]@\h \[\e[1;34m\]\w\[\e[0m\]$ '
-    export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-    cd
-elif [ $TERM = "screen" ]; then
-    export PS1='\[\e]2;\u@\h \w\a\]\[\e[31m\]\u\[\e[32m\]@\h \[\e[1;34m\]\w\[\e[0m\]$ '
-    export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007\033k$HOSTNAME\033\\"'
-else
-    export PS1="\[\e[31m\]\u\[\e[32m\]@\h \[\e[34m\]\w\[\e[0m\]$ "
-fi
-
 if [ ! -d $HOME/.bash_history_dir ]; then
     mkdir $HOME/.bash_history_dir
 fi
@@ -78,3 +67,4 @@ alias keyunlock='ssh-add -X'
 alias sha1='/usr/bin/openssl sha1'
 alias rmd160='/usr/bin/openssl rmd160'
 alias blender='LIBGL_ALWAYS_SOFTWARE=1 blender'
+alias tmux='tmux -2'
