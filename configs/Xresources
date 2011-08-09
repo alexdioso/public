@@ -79,3 +79,4 @@
 xterm*faceName:         terminus:bold:pixelsize=14
 xterm*rightScrollBar:   true
 xterm*boldColors:       true
+XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
