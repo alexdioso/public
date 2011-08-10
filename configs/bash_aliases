@@ -34,6 +34,12 @@ signalit () {
 ##############################################################################
 # Environment setup
 ##############################################################################
+case "$TERM" in
+    screen)
+        export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+        ;;
+esac
+
 export CVS_RSH=/usr/bin/ssh
 
 if [ ! -d $HOME/.bash_history_dir ]; then

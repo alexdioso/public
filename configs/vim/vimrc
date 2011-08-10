@@ -98,8 +98,6 @@ set wrap
 set number
 " Show current line number and horizontal position
 set ruler
-" Show the current file name in the title bar
-set title
 " Add $ to cpoptions, when changing a line put '$' at the end of the line,
 " changed text is overwritten
 " Also add to ~/vim/after/ftplugin/taglist.vim because taglist.vim resets this
@@ -109,10 +107,20 @@ set cpoptions+=$
 set foldmethod=syntax
 " Set highlighting of folded areas to a darker color
 "hi Folded ctermfg=2 ctermbg=0
-" Highlight parts of the line that are longer than 78 characters
-"hi OverLength ctermbg=darkred ctermfg=white
-"match OverLength /\%79v.\+/
 
+" Prevent showing __Tag_List__ as title
+if !exists("title_set")
+    let title_set = 1
+
+    " Show the current working directory on exit in the title
+    let &titleold=""
+
+    " Show title in tmux window name
+    set t_ts=k
+    set t_fs=\ 
+    let &titlestring = "vim " . expand("%")
+    set title
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting
@@ -124,6 +132,9 @@ syntax on
 set background=dark
 colorscheme solarized
 
+" Highlight parts of the line that are longer than 78 characters
+hi OverLength ctermbg=darkred ctermfg=white
+match OverLength /\%79v.\+/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General key mappings
@@ -170,10 +181,7 @@ autocmd BufEnter [Mm]akefile* set noet nocindent tabstop=8 nosmarttab
 autocmd BufEnter Portfile set fenc=utf-8 ft=tcl et sw=4 ts=4 sts=4
 
 " Syntax Highlighting
-" Perl scripts - turn on syntax highlighting
-autocmd BufEnter *.p[lm] set syntax=perl
-" JavaScript - turn on syntax highlighting
-autocmd BufEnter *.js set syntax=javascript
+autocmd BufEnter .bash_aliases set filetype=sh
 " m68k assembly - turn on syntax highlighting
 autocmd BufEnter *.[xX]68 set syntax=asm68k
 
