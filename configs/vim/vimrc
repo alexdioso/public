@@ -174,11 +174,11 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source Code
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup SourceCode
+autocmd!
+
 " Makefiles - don't expand tabs, don't automatically indent, default tab size
 autocmd BufEnter [Mm]akefile* set noet nocindent tabstop=8 nosmarttab
-
-" Portfiles - specific settings
-autocmd BufEnter Portfile set fenc=utf-8 ft=tcl et sw=4 ts=4 sts=4
 
 " Syntax Highlighting
 autocmd BufEnter .bash_aliases set filetype=sh
@@ -245,24 +245,38 @@ autocmd BufEnter *.go nnoremap <silent> ,gf :let save_cursor = getpos(".")<cr>:%
 autocmd BufEnter *.java nnoremap <silent> ,ai :!ant install<cr>
 autocmd BufEnter *.java nnoremap <silent> ,ad :!ant debug<cr>
 autocmd BufEnter *.java nnoremap <silent> ,at :!ant run-tests<cr>
+
+augroup END " SourceCode
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Outlines
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup Outlines
+autocmd!
 autocmd BufEnter *.otl set ai ic backspace=2 foldmethod=indent noexpandtab nosmarttab softtabstop=0
+augroup END " Outlines
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text files
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup TextFiles
+autocmd!
+
 " Turn off colors
 autocmd BufEnter *.txt syntax off
 " Check spelling
 autocmd BufEnter *.txt,*.html,README set spell
 
+augroup END " TextFiles
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Templates
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup Templates
+autocmd!
+
 " Entire perl modulino template
 autocmd BufEnter *.p[lm] iab ptemplate :r ~/git/public/templates/perl/Template.pmkdd
 " ISC License with Perl comments
@@ -279,3 +293,5 @@ autocmd BufEnter *.js iab jexterns :r ~/git/public/templates/js/externs.jskdd
 
 " ISC License with XML comments
 autocmd BufEnter *.xml iab xiscl :r ~/git/public/templates/xml/isc_license.xmlkdd
+
+augroup END " Templates
