@@ -56,6 +56,10 @@ export GOROOT=/usr/local/go
 # Use vi bindings for the shell instead of emacs
 set -o vi
 
+if [ -x /usr/bin/xrdb ] && [ -f $HOME/.Xresources ]; then
+    /usr/bin/xrdb -merge $HOME/.Xresources
+fi
+
 ##############################################################################
 # Aliases
 ##############################################################################
