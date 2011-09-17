@@ -1,0 +1,6 @@
+# Bug in ubuntu requires this file
+# https://bugs.launchpad.net/ubuntu/+source/gdm/+bug/785521
+
+# sysresources does not seem to work with solarized color scheme
+#SYSRESOURCES=/etc/X11/Xresources
+USRRESOURCES=$HOME/.Xresources

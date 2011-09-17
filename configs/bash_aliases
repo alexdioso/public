@@ -50,15 +50,17 @@ export HISTFILE=$HOME/.bash_history_dir/$HOSTNAME.history
 export CLICOLOR=1
 export EDITOR=vi
 export LESSHISTFILE="-"
-export PAGER=/usr/bin/less
+
+if [ -x /usr/bin/most ]; then
+    export PAGER=/usr/bin/most
+else
+    export PAGER=/usr/bin/less
+fi
+
 export PATH=$PATH:/usr/local/go/bin:$HOME/lib/google_appengine:$HOME/lib/android-sdk-linux_x86/platform-tools:$HOME/lib/android-sdk-linux_x86/tools
 export GOROOT=/usr/local/go
 # Use vi bindings for the shell instead of emacs
 set -o vi
-
-if [ -x /usr/bin/xrdb ] && [ -f $HOME/.Xresources ]; then
-    /usr/bin/xrdb -merge $HOME/.Xresources
-fi
 
 ##############################################################################
 # Aliases
