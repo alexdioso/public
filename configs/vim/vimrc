@@ -197,11 +197,21 @@ if winwidth(0) >= 160
     autocmd BufEnter *.p[lm] nnoremap <silent> ,pC :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
     " Perl scripts - run perlcritic on entire file
     autocmd BufEnter *.p[lm] nnoremap <silent> ,pc :compiler perlcritic<cr>:make<cr>:vert cope<cr>
+
+    " go programs with Makefiles
+    autocmd BufEnter *.go nnoremap <silent> ,gc :set makeprg=make<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
+    " go programs with Makefiles with debugging
+    autocmd BufEnter *.go nnoremap <silent> ,gd :set makeprg=make\ debug<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
 else
     " Perl scripts - check for errors
     autocmd BufEnter *.p[lm] nnoremap <silent> ,pC :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
     " Perl scripts - run perlcritic on entire file
     autocmd BufEnter *.p[lm] nnoremap <silent> ,pc :compiler perlcritic<cr>:make<cr>:cope<cr>
+
+    " go programs with Makefiles
+    autocmd BufEnter *.go nnoremap <silent> ,gc :set makeprg=make<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
+    " go programs with Makefiles with debugging
+    autocmd BufEnter *.go nnoremap <silent> ,gd :set makeprg=make\ debug<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
 endif
 
 " Perl scripts - tidy line
@@ -221,7 +231,7 @@ autocmd BufEnter *.c map t 1G!Gindent -nbad -nbap -bbb -nbc -br -brs -c33 -cd33 
 " JavaScript - Run spidermonkey on entire file
 autocmd BufEnter *.js nnoremap <silent> ,jj :set makeprg=js\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
 " JavaScript - Run closure compiler on entire file
-"autocmd BufEnter *.js nnoremap <silent> ,jc :set makeprg=closure\ --compilation_level\ ADVANCED_OPTIMIZATIONS\ --js\ %\ --js_output_file\ %:r.tiny.js\ --externs\ %:r.externs.js<cr>:make<cr><cr>
+autocmd BufEnter *.js nnoremap <silent> ,jc :set makeprg=closure\ --compilation_level\ ADVANCED_OPTIMIZATIONS\ --js\ %\ --js_output_file\ %:r.tiny.js\ --externs\ %:r.externs.js<cr>:make<cr><cr>
 
 " TODO
 " Need to figure out how to find line numbers to run closure on specific
