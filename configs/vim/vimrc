@@ -202,6 +202,7 @@ if winwidth(0) >= 160
     autocmd BufEnter *.go nnoremap <silent> ,gc :set makeprg=make<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
     " go programs with Makefiles with debugging
     autocmd BufEnter *.go nnoremap <silent> ,gd :set makeprg=make\ debug<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
+
 else
     " Perl scripts - check for errors
     autocmd BufEnter *.p[lm] nnoremap <silent> ,pC :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
@@ -248,8 +249,8 @@ au BufRead <google_gadgets> runtime! syntax/google_gadgets.vim
 " .ebnf format
 autocmd BufEnter *.ebnf runtime! bundle/ebnf.vim/syntax/ebnf.vim
 
-" Go Lang
-autocmd BufEnter *.go nnoremap <silent> ,gf :let save_cursor = getpos(".")<cr>:%!gofmt<cr>:call setpos('.', save_cursor)<cr>
+" Go Lang - 4 spaces per level - do not use for submitting official go code
+autocmd BufEnter *.go nnoremap <silent> ,gf :let save_cursor = getpos(".")<cr>:%!gofmt -tabindent=false -tabwidth=4<cr>:call setpos('.', save_cursor)<cr>
 
 " Android development
 " vim must be run from project root
