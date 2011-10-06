@@ -180,6 +180,9 @@ au BufEnter *.ebnf runtime! bundle/ebnf.vim/syntax/ebnf.vim
 " .otl Outline
 au BufEnter *.otl set filetype=outline
 
+" Make files
+au BufEnter Make.* set filetype=make
+
 augroup END " FileFormats
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
