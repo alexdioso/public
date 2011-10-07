@@ -5,6 +5,8 @@
 " gofmt defaults
 setlocal noexpandtab
 setlocal tabstop=8
+setlocal shiftwidth=8
+setlocal softtabstop=8
 
 " If this is a really wide window then split the screen vertically
 if winwidth(0) >= 160
@@ -23,3 +25,4 @@ endif
 
 " Go Lang - standard format
 map ,f :Fmt<cr>
+map ,i :setlocal makeprg=make\ install<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
