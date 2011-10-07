@@ -41,8 +41,6 @@ set viminfo=""
 set autowrite
 " Disable autowrite for extra commands
 set noautowriteall
-" Enable modelines
-set modeline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Formatting
@@ -179,6 +177,9 @@ au BufEnter *.ebnf runtime! bundle/ebnf.vim/syntax/ebnf.vim
 
 " .otl Outline
 au BufEnter *.otl set filetype=outline
+
+" Makefiles
+au BufEnter [Mm]ake* set filetype=make
 
 augroup END " FileFormats
 
