@@ -59,7 +59,7 @@ else
 fi
 
 export PATH=$PATH:/usr/local/go/bin:$HOME/lib/google_appengine:$HOME/lib/android-sdk-linux_x86/platform-tools:$HOME/lib/android-sdk-linux_x86/tools
-export GOROOT=/usr/local/go
+export GOROOT=/usr/lib/go
 # Use vi bindings for the shell instead of emacs
 set -o vi
 
