@@ -1,1 +1,1 @@
-/usr/local/go/misc/vim/ftdetect/gofiletype.vim
+/usr/lib/go/misc/vim/ftdetect/gofiletype.vim
