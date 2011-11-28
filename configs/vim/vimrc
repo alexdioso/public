@@ -131,6 +131,7 @@ match OverLength /\%79v.\+/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General key mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
 " map f !Gperl -MText::Autoformat -e'autoformat {squeeze=>0}'
 " Format text
 map f {!}fmt -79
@@ -139,9 +140,9 @@ map <space> <c-f>
 " Page backward
 map <backspace> <c-b>
 " Re-read your .vimrc
-nmap ,s :source ~/.vimrc<cr>
+nmap <leader>s :source ~/.vimrc<cr>
 " Edit your .vimrc
-nmap ,v :e ~/.vimrc
+nmap <leader>v :e ~/.vimrc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

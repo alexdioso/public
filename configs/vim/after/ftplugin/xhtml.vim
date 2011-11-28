@@ -1,2 +1,2 @@
 " Tidy xml
-map ,x :%!xmllint --format --recover - 2>/dev/null<cr>
+map <leader>x :%!xmllint --format --recover - 2>/dev/null<cr>

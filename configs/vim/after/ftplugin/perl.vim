@@ -5,26 +5,26 @@
 if winwidth(0) >= 160
     setlocal winwidth=80
     " Perl scripts - check for errors
-    map ,C :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
+    map <leader>C :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:vert cope<cr>
     " Perl scripts - run perlcritic on entire file
-    map ,c :compiler perlcritic<cr>:make<cr>:vert cope<cr>
+    map <leader>c :compiler perlcritic<cr>:make<cr>:vert cope<cr>
 
 else
     " Perl scripts - check for errors
-    map ,C :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
+    map <leader>C :set makeprg=perl\ -wc\ %<cr>:set errorformat=%f:%l:%m<cr>:set errorformat+=%m\ at\ %f\ line\ %l.<cr>:make<cr>:cope<cr>
     " Perl scripts - run perlcritic on entire file
-    map ,c :compiler perlcritic<cr>:make<cr>:cope<cr>
+    map <leader>c :compiler perlcritic<cr>:make<cr>:cope<cr>
 
 endif
 
 " Perl scripts - tidy line
-map ,t :let save_cursor = getpos(".")<cr>:.!perltidy -q<cr>:call setpos('.', save_cursor)<cr>
+map <leader>t :let save_cursor = getpos(".")<cr>:.!perltidy -q<cr>:call setpos('.', save_cursor)<cr>
 " Perl scripts - tidy entire file
-map ,T :let save_cursor = getpos(".")<cr>:%!perltidy -q<cr>:call setpos('.', save_cursor)<cr>
+map <leader>T :let save_cursor = getpos(".")<cr>:%!perltidy -q<cr>:call setpos('.', save_cursor)<cr>
 " Perl scripts - Deparse single line of obfuscated perl code
-map ,d :.!perl -MO=Deparse 2>/dev/null<cr>
+map <leader>d :.!perl -MO=Deparse 2>/dev/null<cr>
 " Perl scripts - Deparse entire file of obfuscated perl code
-map ,D :%!perl -MO=Deparse 2>/dev/null<cr>
+map <leader>D :%!perl -MO=Deparse 2>/dev/null<cr>
 
 " Entire perl modulino template
 iab ptemplate <esc>:r ~/git/public/templates/perl/Template.pm<cr><esc>kdd
