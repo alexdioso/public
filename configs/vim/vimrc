@@ -196,3 +196,4 @@ autocmd BufEnter *.txt syntax off
 autocmd BufEnter *.txt,*.html,README set spell
 
 augroup END " TextFiles
+
