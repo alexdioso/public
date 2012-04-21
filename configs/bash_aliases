@@ -58,7 +58,12 @@ else
     export PAGER=/usr/bin/less
 fi
 
-export PATH=$PATH:/usr/local/go/bin:$HOME/lib/google_appengine:$HOME/lib/android-sdk-linux_x86/platform-tools:$HOME/lib/android-sdk-linux_x86/tools
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:$HOME/lib/google_appengine
+PATH=$PATH:$HOME/lib/android-sdk-linux_x86/platform-tools
+PATH=$PATH:$HOME/lib/android-sdk-linux_x86/tools
+PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
+export PATH
 export GOROOT=/usr/lib/go
 # Use vi bindings for the shell instead of emacs
 set -o vi
