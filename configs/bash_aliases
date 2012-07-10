@@ -68,6 +68,8 @@ export GOROOT=/usr/lib/go
 # Use vi bindings for the shell instead of emacs
 set -o vi
 
+export GOPATH=$HOME/lib/go
+
 ##############################################################################
 # Aliases
 ##############################################################################
