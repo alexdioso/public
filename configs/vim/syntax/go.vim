@@ -1,1 +1,1 @@
-/usr/lib/go/misc/vim/syntax/go.vim
+/usr/share/vim/addons/syntax/go.vim
