@@ -76,8 +76,9 @@
 *color7:                S_base2
 *color15:               S_base3
 
-xterm*faceName:         terminus:bold
-xterm*faceSize:         11
+!!xterm*faceName:         terminus:bold
+xterm*faceName:         Ubuntu Mono
+xterm*faceSize:         12
 xterm*rightScrollBar:   true
 xterm*boldColors:       true
 XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
