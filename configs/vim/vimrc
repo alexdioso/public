@@ -148,8 +148,6 @@ nmap <leader>v :e ~/.vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TagList
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto open TagList on supported files
-let Tlist_Auto_Open = 1
 " Exit if TagList is the only window left
 let Tlist_Exit_OnlyWindow = 1
 " Auto close the fold for inactive files 
@@ -160,6 +158,8 @@ let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Use_Right_Window = 1
 
 if winwidth(0) >= 160
+    " Auto open TagList on supported files
+    let Tlist_Auto_Open = 1
     let Tlist_WinWidth = 40
 endif
 
