@@ -23,3 +23,12 @@
 [submodule "configs/vim/bundle/vim-colors-solarized"]
 	path = configs/vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "configs/vim/bundle/csslint"]
+	path = configs/vim/bundle/csslint
+	url = https://github.com/stubbornella/csslint.git
+[submodule "configs/vim/bundle/jshint"]
+	path = configs/vim/bundle/jshint
+	url = https://github.com/jshint/jshint.git
+[submodule "configs/vim/bundle/lint"]
+	path = configs/vim/bundle/lint
+	url = https://github.com/joestelmach/lint.vim.git
